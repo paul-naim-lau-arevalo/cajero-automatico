@@ -1,10 +1,6 @@
-"""Simulador de cajero automático para practicar Python en consola."""
-
 from decimal import Decimal, InvalidOperation
 
 
-# Cuentas de ejemplo para probar el cajero.
-# Los saldos y movimientos se mantienen durante esta ejecución.
 usuarios = {
     "1": {"nombre": "Ana", "pin": "1234", "saldo": Decimal("1000.00"), "movimientos": []},
     "2": {"nombre": "Luis", "pin": "5678", "saldo": Decimal("750.00"), "movimientos": []},
@@ -21,37 +17,37 @@ def iniciar_sesion():
     print("PIN de prueba: Ana 1234 | Luis 5678")
 
     while True:
-        numero = input("Elegí un usuario (1 o 2), o 0 para salir: ").strip()
+        numero = input("Elige un usuario (1 o 2), o 0 para salir: ").strip()
         if numero == "0":
             return None
         if numero not in usuarios:
-            print("Elegí un usuario de la lista.")
+            print("Elige un usuario de la lista.")
             continue
 
         usuario = usuarios[numero]
         for intento in range(1, 4):
-            pin = input("Ingresá el PIN: ").strip()
+            pin = input("Ingresa el PIN: ").strip()
             if pin == usuario["pin"]:
                 print(f"\n¡Bienvenido, {usuario['nombre']}!")
                 return usuario
             print(f"PIN incorrecto. Intento {intento} de 3.")
-        print("Se agotaron los intentos. Elegí un usuario para volver a empezar.")
+        print("Se agotaron los intentos. Elige un usuario para volver a empezar.")
 
 
 def pedir_monto():
     while True:
-        texto = input("Ingresá el monto (o 0 para cancelar): ").strip().replace(",", ".")
+        texto = input("Ingresa el monto (o 0 para cancelar): ").strip().replace(",", ".")
         try:
             monto = Decimal(texto)
         except InvalidOperation:
-            print("Escribí un monto válido, por ejemplo 25.50.")
+            print("Escribe un monto válido, por ejemplo 25.50.")
             continue
         if not monto.is_finite():
-            print("Ingresá un monto válido.")
+            print("Ingresa un monto válido.")
         elif monto == 0:
             return None
         elif monto < 0 or monto != monto.quantize(Decimal("0.01")):
-            print("Ingresá un monto positivo con hasta dos decimales.")
+            print("Ingresa un monto positivo con hasta dos decimales.")
         else:
             return monto
 
@@ -92,16 +88,6 @@ def ver_historial(usuario):
         print(f"{numero}. {tipo}: {mostrar_dinero(monto)} | Saldo: {mostrar_dinero(saldo)}")
 
 
-# ESPACIO PARA EL COMPAÑERO 1:
-# Puede mejorar los mensajes, la presentación del menú o añadir un resumen.
-# El cajero ya funciona con las opciones que aparecen a continuación.
-
-
-# ESPACIO PARA EL COMPAÑERO 2:
-# Puede crear una búsqueda de movimientos o un reporte final por usuario.
-# Los movimientos ya se guardan por separado para cada cuenta.
-
-
 def usar_cajero(usuario):
     opcion = ""
     while opcion != "6":
@@ -117,7 +103,7 @@ def usar_cajero(usuario):
         print("4. Ver historial")
         print("5. Cambiar de usuario")
         print("6. Salir")
-        opcion = input("Seleccioná una opción: ").strip()
+        opcion = input("Selecciona una opción: ").strip()
 
         if opcion == "1":
             consultar_saldo(usuario)
