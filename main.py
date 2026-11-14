@@ -105,7 +105,12 @@ def ver_historial(usuario):
 def usar_cajero(usuario):
     opcion = ""
     while opcion != "6":
-        print("\n--- MENÚ DEL CAJERO ---")
+        print("\n================================")
+        print("        MENÚ DEL CAJERO")
+        print("================================")
+        print(f"Usuario: {usuario['nombre']}")
+        print(f"Saldo actual: {mostrar_dinero(usuario['saldo'])}")
+        print("================================")
         print("1. Consultar saldo")
         print("2. Depositar dinero")
         print("3. Retirar dinero")
@@ -129,7 +134,7 @@ def usar_cajero(usuario):
             print("¡Gracias por utilizar nuestro cajero!")
             return False
         else:
-            print("Elegí una opción del 1 al 6.")
+            print("Opción no válida. Por favor, selecciona un número del 1 al 6.")
     return False
 
 
