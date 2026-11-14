@@ -16,7 +16,7 @@ def mostrar_dinero(cantidad):
 
 
 def iniciar_sesion():
-    print("\n=== BIENVENIDO AL CAJERO ===")
+    print("\n=== 💰 BIENVENIDO A TU CAJERO AUTOMÁTICO 💰 ===")
     print("Usuarios de prueba: 1. Ana | 2. Luis")
     print("PIN de prueba: Ana 1234 | Luis 5678")
 
